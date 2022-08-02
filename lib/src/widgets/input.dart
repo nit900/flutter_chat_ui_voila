@@ -181,6 +181,7 @@ class _InputState extends State<Input> {
                   child: Padding(
                     padding: textPadding,
                     child: TextField(
+                      textDirection: widget.options.textDirection,
                       controller: _textController,
                       cursorColor: InheritedChatTheme.of(context)
                           .theme
@@ -246,12 +247,15 @@ class InputOptions {
     this.inputClearMode = InputClearMode.always,
     this.onTextChanged,
     this.onTextFieldTap,
+    this.textDirection = TextDirection.ltr,
     this.sendButtonVisibilityMode = SendButtonVisibilityMode.editing,
     this.textEditingController,
   });
 
   /// Controls the [Input] clear behavior. Defaults to [InputClearMode.always].
   final InputClearMode inputClearMode;
+
+  final TextDirection textDirection;
 
   /// Will be called whenever the text inside [TextField] changes.
   final void Function(String)? onTextChanged;
